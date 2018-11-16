@@ -16,6 +16,9 @@
         <td><%= link_to "Edit", edit_board_path(board) %></td>
         <td><%= link_to "Destroy", board_path(board), method: :delete %></td>
       </tr>
+        <td><%= link_to "New Artist", new_artist_path %></td>
+        <td><%= link_to "View All Artists", artists_path %></td>
+
     <% end %>
   </tbody>
 </table>

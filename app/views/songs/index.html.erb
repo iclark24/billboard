@@ -1,0 +1,24 @@
+<h1 class="ui header">Songs <%= @board.name %></h1>
+<table class="ui striped table">
+  <thead>
+    <tr class="center aligned">
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @songs.each do |song| %>
+      <tr class="center aligned">
+        <td>
+        <%= song.name %>
+        </td>
+        <td><%= link_to "Edit", edit_board_song_path(@board, song) %></td>
+        <td><%= link_to "Destroy", board_song_path(@board, song), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br />
+<%= link_to "New Song", new_board_song_path(@board) %>
+<br />
+<%= link_to "Back", board_songs_path(@board) %>

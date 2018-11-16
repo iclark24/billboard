@@ -1,0 +1,25 @@
+<h1 class="ui header">Artists in <%= @board.name %></h1>
+<table class="ui striped table">
+  <thead>
+    <tr class="center aligned">
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @artists.each do |artist| %>
+      <tr class="center aligned">
+        <td>
+        <%= artist.name %>
+        </td>
+        <td><%= link_to "Songs", artist_songs_path(artist) %></td>
+        <td><%= link_to "Edit", edit_board_artist_path(@board, artist) %></td>
+        <td><%= link_to "Destroy", board_artist_path(@board, artist), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br />
+<%= link_to "New Artist", new_board_artist_path(@board) %>
+<br />
+<%= link_to "Back", boards_path %>

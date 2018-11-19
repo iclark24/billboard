@@ -7,19 +7,13 @@
   </thead>
   
   <tbody>
-    <% for songs in @board do |song| %>
+    <% @board.songs.each do |song| %>
       <tr class="center aligned">
         <td>
         <%= song.name %>
         </td>
-        <td><%= link_to "Songs", board_song_path(song) %></td>
-        <td><%= link_to "Edit", edit_board_song_path(@board, song) %></td>
-        <td><%= link_to "Destroy", board_song_path(@board, song), method: :delete %></td>
+        <td>By: <%= link_to song.artist.name, artist_songs_path(song.artist), class: "ui button blue" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<br />
-<%= link_to "New Song", new_board_song_path(@board) %>
-<br />
-<%= link_to "Back", boards_path %>

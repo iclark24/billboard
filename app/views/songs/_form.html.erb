@@ -1,7 +1,27 @@
-<h1><%= @song.id ? 'Edit Song' : 'Create Song' %></h1>
+<% if @song.id %>
+<h1> Add Song </h1>
 <hr />
-<%= form_with(model: [@board, @song], local: true, class: "ui form") do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name, required: true, autofocus: true %>
-  <%= f.submit %>
+  <%= form_with(model: [@artist, @song], local: true, class: "ui form") do |f| %>
+    
+    <%= f.select(:board_id, required: false) do %>
+      <% @existingboards.each do |board| %>
+        <%= content_tag(:option, board.name, value: [board.id])%>
+      <%end%>
+
+    <%end%>
+    <%= f.submit %>
+  <% end %>
+
+<% else %>
+<h1>Create Song</h1>
+<hr />
+  <%= form_with(model: [@artist, @song], local: true, class: "ui form") do |f| %>
+    <%= f.label :name %>
+    <br />
+    <br/>
+    <%= f.text_field :name, required: true, autofocus: true %>
+    <br />
+    <br />
+    <%= f.submit "Create Song" %>
+  <% end %>
 <% end %>

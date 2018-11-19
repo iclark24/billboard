@@ -1,11 +1,15 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: [:show, :update, :edit, :destroy]
+  before_action :set_board, only: [:add_songs, :show, :update, :edit, :destroy]
 
   def index
     @boards = Board.all
   end
 
   def show
+  end
+
+  def add_songs
+    @songs = Song.all
   end
 
   def new

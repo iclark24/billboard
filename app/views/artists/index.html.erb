@@ -1,4 +1,7 @@
 <h1 class="ui header">Artists</h1>
+<div class="ui green one item inverted menu">
+  <%= link_to "New Artist", new_artist_path(@board), class: "item" %>
+</div>
 <table class="ui striped table">
   <thead>
     <tr class="center aligned">
@@ -12,14 +15,11 @@
         <td>
         <%= artist.name %>
         </td>
-        <td><%= link_to "Songs", artist_songs_path(artist) %></td>
-        <td><%= link_to "Edit", edit_artist_path(artist) %></td>
-        <td><%= link_to "Destroy", artists_path(artist), method: :delete %></td>
+        <td><%= link_to "Songs", artist_songs_path(artist), class: "ui button green" %></td>
+        <td><%= link_to "Edit", edit_artist_path(artist), class: "ui button yellow" %></td>
+        <td><%= link_to "Delete", artist_path(artist), method: :delete, class: "ui button red" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <br />
-<%= link_to "New Artist", new_artist_path(@board) %>
-<br />
-<%= link_to "Back to Boards", boards_path %>
